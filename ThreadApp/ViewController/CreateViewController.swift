@@ -24,6 +24,14 @@ class CreateViewController: UIViewController, UITextViewDelegate {
         // 키보드 관련 Notification 설정
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
+        toolbar.items = [
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), // 왼쪽에 공간을 만들어서 버튼을 오른쪽으로 밀어줍니다.
+            UIBarButtonItem(title: "게시", style: .done, target: self, action: #selector(createButton(_:)))
+        ]
+        threadText.inputAccessoryView = toolbar
+
     }
     
     deinit {
@@ -70,18 +78,18 @@ class CreateViewController: UIViewController, UITextViewDelegate {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         // 필요한 경우 뷰를 올리는 로직 추가
-//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y == 0 {
-//                self.view.frame.origin.y -= keyboardSize.height / 2
-//            }
-//        }
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+             if self.view.frame.origin.y == 0 {
+                 self.view.frame.origin.y -= keyboardSize.height / 3  // 뷰를 키보드 높이의 1/3만큼 위로 이동
+             }
+         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         // 필요한 경우 뷰를 원래 위치로 내리는 로직 추가
-//        if self.view.frame.origin.y != 0 {
-//            self.view.frame.origin.y = 0
-//        }
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     @objc func printStoredThreads() {
