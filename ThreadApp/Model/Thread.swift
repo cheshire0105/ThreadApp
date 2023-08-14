@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Thread {
+struct Thread : Codable{
     var title: String
     var createdAt: Date
     var commentCount: Int
