@@ -12,6 +12,8 @@ class CreateViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var threadText: UITextView!
     
+    @IBOutlet weak var threadTitle: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,10 +50,11 @@ class CreateViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func createButton(_ sender: UIBarButtonItem) {
-        let title = threadText.text ?? ""
+        let title = threadTitle.text ?? ""
+        let text = threadText.text ?? ""
         let currentDateTime = Date()
         let author = Profile(photoData: nil, name: "UserName", bio: "UserBio")
-        let newThread = Thread(title: title, createdAt: currentDateTime, commentCount: 0, photoData: nil, authorProfile: author, comments: nil)
+        let newThread = Thread(title: title, createdAt: currentDateTime, content: text, photoData: nil, authorProfile: author, comments: nil)
         ThreadStore.shared.addThread(thread: newThread)
         
         print("게시되었습니다.")
