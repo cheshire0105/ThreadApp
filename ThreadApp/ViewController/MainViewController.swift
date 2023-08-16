@@ -21,16 +21,37 @@ final class MainViewController: UIViewController {
     }
     
     private func threadsCollectionConfigure() {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 300)
-        threadsCollectionView.collectionViewLayout = layout
+
+        threadsCollectionView.collectionViewLayout = createCompositionalLayout()
         threadsCollectionView.register(
             UINib(nibName: MainCollectionViewCell.identifier, bundle: nil),
             forCellWithReuseIdentifier: MainCollectionViewCell.identifier
         )
         threadsCollectionView.delegate = self
         threadsCollectionView.dataSource = self
+
     }
+    
+    private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(100)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(100)
+        )
+        let group = NSCollectionLayoutGroup.vertical(
+            layoutSize: groupSize,
+            subitems: [item]
+        )
+        let section = NSCollectionLayoutSection(group: group)
+ 
+        let compositionalLayout = UICollectionViewCompositionalLayout(section: section)
+        return compositionalLayout
+    }
+    
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -51,7 +72,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             withReuseIdentifier: MainCollectionViewCell.identifier,
             for: indexPath
         ) as? MainCollectionViewCell else { return UICollectionViewCell() }
-        cell.bind(thread: .init(title: "테스트", createdAt: .init(), content: "wetweatewatwea", photoData: UIImage(systemName: "pencil")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "pencil")?.pngData(), name: "반가워", bio: "정보")))
+        cell.bind(thread: .init(title: "테스트", createdAt: .init(), content: "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea", photoData: UIImage(systemName: "pencil")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "pencil")?.pngData(), name: "반가워", bio: "정보")))
         return cell
     }
     
