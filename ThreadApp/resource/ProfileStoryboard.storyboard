@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--프로필-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="ProfilePage" customModule="ThreadApp" sceneMemberID="viewController">
@@ -106,7 +106,7 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="ceQ-SL-2JZ"/>
+                    <tabBarItem key="tabBarItem" title="프로필" image="person" catalog="system" id="ceQ-SL-2JZ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="BellButton" destination="35P-5x-XJ2" id="2Tv-LA-ipl"/>
@@ -192,6 +192,7 @@
         <image name="InstaIcon" width="348" height="348"/>
         <image name="bell" catalog="system" width="125" height="128"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="123"/>
+        <image name="person" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

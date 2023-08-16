@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Create-->
+        <!--새 글 작성-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="Create" id="Y6W-OH-hqX" customClass="CreateViewController" customModule="ThreadApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -73,7 +73,7 @@
                             <constraint firstItem="yh1-ND-DL0" firstAttribute="top" secondItem="MDH-wb-mUF" secondAttribute="bottom" constant="20" id="xUm-gR-uqK"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Create" id="K6J-KO-BCc"/>
+                    <tabBarItem key="tabBarItem" title="새 글 작성" image="pencil" catalog="system" id="K6J-KO-BCc"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="threadText" destination="fR4-j5-sM5" id="ezS-WM-N15"/>
@@ -86,6 +86,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
