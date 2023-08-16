@@ -52,8 +52,8 @@
 		FFE4F2442A8A207D00BCC86D /* ThreadDataSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadDataSingleton.swift; sourceTree = "<group>"; };
 		FFE4F2552A8C5EEA00BCC86D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FFE4F2572A8C5F1200BCC86D /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
-		FFE4F2592A8C601400BCC86D /* MainCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainCollectionViewCell.xib; path = "../../../../../../../../Downloads/ThreadApp-feature-mainPage/ThreadApp/resource/MainCollectionViewCell.xib"; sourceTree = "<group>"; };
-		FFE4F25A2A8C601400BCC86D /* MainViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainViewController.storyboard; path = "../../../../../../../../Downloads/ThreadApp-feature-mainPage/ThreadApp/resource/MainViewController.storyboard"; sourceTree = "<group>"; };
+		FFE4F2592A8C601400BCC86D /* MainCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainCollectionViewCell.xib; sourceTree = "<group>"; };
+		FFE4F25A2A8C601400BCC86D /* MainViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
