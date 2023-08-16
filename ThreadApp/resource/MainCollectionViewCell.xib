@@ -92,7 +92,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bJQ-uL-TC3">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bJQ-uL-TC3">
                                                 <rect key="frame" x="0.0" y="44" width="329" height="41"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="답글 3개 좋아요 76개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjG-6y-ZSZ">
@@ -126,6 +126,7 @@
                 <outlet property="threadCommentCountLabel" destination="tjG-6y-ZSZ" id="wTr-rh-gqm"/>
                 <outlet property="threadContentLabel" destination="fOC-XJ-AaB" id="N3b-vo-g2f"/>
                 <outlet property="threadImageView" destination="bJQ-uL-TC3" id="gXw-Hm-wsn"/>
+                <outlet property="threadStackView" destination="KfB-4U-zYp" id="JrE-Kh-07J"/>
                 <outlet property="threadWrittenDateLabel" destination="S2B-WB-EJR" id="uIl-QO-ofn"/>
             </connections>
             <point key="canvasLocation" x="304.58015267175574" y="55.985915492957751"/>

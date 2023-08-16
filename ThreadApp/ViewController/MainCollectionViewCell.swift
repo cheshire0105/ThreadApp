@@ -28,6 +28,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
         threadStackView.addGestureRecognizer(threadStackViewDidTappedGestureRecognizer)
     }
 
+    
     func bind(thread: Thread) {
         if let authorProfileImageData = thread.authorProfile.photoData {
             authorProfileImageView.image = UIImage(data: authorProfileImageData)
