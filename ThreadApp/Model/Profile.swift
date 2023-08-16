@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Profile: Hashable {
+struct Profile : Codable, Hashable {
     var photoData: Data?
     var name: String
     var bio: String
