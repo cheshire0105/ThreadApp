@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eTt-he-cs1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eTt-he-cs1">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,10 +20,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="S1c-kW-7Lt"/>
+                    <navigationItem key="navigationItem" id="nkD-kJ-zKW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wJt-cU-gVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-785" y="257"/>
+            <point key="canvasLocation" x="-1242" y="278"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Gbw-E0-cNz">
@@ -35,15 +36,28 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="cGf-R3-TuF" kind="relationship" relationship="viewControllers" id="qpa-rp-TUc"/>
+                        <segue destination="g7W-fE-YoZ" kind="relationship" relationship="viewControllers" id="OGf-A4-Nsk"/>
+                        <segue destination="cGf-R3-TuF" kind="relationship" relationship="viewControllers" id="zgE-d4-1gP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GNX-GN-bni" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1691" y="-46"/>
+            <point key="canvasLocation" x="-2132" y="42"/>
+        </scene>
+        <!--MainViewController-->
+        <scene sceneID="hrW-HO-5Xl">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="MainViewController" storyboardName="MainViewController" id="g7W-fE-YoZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="pencil.circle.fill" catalog="system" selectedImage="rectangle.portrait.and.arrow.right.fill" id="78r-9w-wut"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hIP-PP-Fwi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1532" y="-264"/>
         </scene>
     </scenes>
     <resources>
+        <image name="pencil.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="rectangle.portrait.and.arrow.right.fill" catalog="system" width="128" height="108"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
