@@ -19,7 +19,6 @@ final class MainViewController: UIViewController {
     private var dataSource: UICollectionViewDiffableDataSource<Section, Thread>!
     private lazy var snapshot = NSDiffableDataSourceSnapshot<Section, Thread>()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -92,6 +91,5 @@ final class MainViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: true)
 
     }
-
 }
 
