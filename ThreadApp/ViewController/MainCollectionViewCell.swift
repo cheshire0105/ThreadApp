@@ -17,11 +17,17 @@ final class MainCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var threadContentLabel: UILabel!
     @IBOutlet weak var threadImageView: UIImageView!
     @IBOutlet weak var threadCommentCountLabel: UILabel!
+    @IBOutlet weak var threadStackView: UIStackView!
     
+    var threadStackViewTapped: ((Thread) -> Void)? = nil
+    private var thread: Thread? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        let threadStackViewDidTappedGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(threadStackDidTapped))
+        threadStackView.addGestureRecognizer(threadStackViewDidTappedGestureRecognizer)
     }
+
     
     func bind(thread: Thread) {
         if let authorProfileImageData = thread.authorProfile.photoData {
@@ -38,6 +44,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
         } else {
             threadCommentCountLabel.text = "댓글 개수 0 개"
         }
+        self.thread = thread
 
     }
     
@@ -49,6 +56,12 @@ final class MainCollectionViewCell: UICollectionViewCell {
         threadWrittenDateLabel.text = ""
         threadContentLabel.text = ""
         threadCommentCountLabel.text = ""
+        thread = nil
+    }
+    
+    @objc private func threadStackDidTapped(_ sender: UIGestureRecognizer) {
+        guard let thread else {return}
+        threadStackViewTapped!(thread)
     }
 
 }

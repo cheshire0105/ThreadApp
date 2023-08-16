@@ -132,6 +132,7 @@
                 <outlet property="threadCommentCountLabel" destination="tjG-6y-ZSZ" id="wTr-rh-gqm"/>
                 <outlet property="threadContentLabel" destination="fOC-XJ-AaB" id="N3b-vo-g2f"/>
                 <outlet property="threadImageView" destination="bJQ-uL-TC3" id="gXw-Hm-wsn"/>
+                <outlet property="threadStackView" destination="KfB-4U-zYp" id="z3i-SI-y4P"/>
                 <outlet property="threadWrittenDateLabel" destination="S2B-WB-EJR" id="uIl-QO-ofn"/>
             </connections>
             <point key="canvasLocation" x="304.58015267175574" y="55.985915492957751"/>

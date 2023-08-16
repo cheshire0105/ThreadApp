@@ -9,6 +9,13 @@ import UIKit
 
 final class MainViewController: UIViewController {
     
+    enum Section {
+        case main
+    }
+    
+    var dataSource: UICollectionViewDiffableDataSource<Section, String>!
+    
+    
     @IBOutlet weak var threadsCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -51,7 +58,7 @@ final class MainViewController: UIViewController {
         let compositionalLayout = UICollectionViewCompositionalLayout(section: section)
         return compositionalLayout
     }
-    
+
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -73,6 +80,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             for: indexPath
         ) as? MainCollectionViewCell else { return UICollectionViewCell() }
         cell.bind(thread: .init(title: "테스트", createdAt: .init(), content: "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea", photoData: UIImage(systemName: "pencil")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "pencil")?.pngData(), name: "반가워", bio: "정보")))
+        cell.threadStackViewTapped = { thread in
+            // 탭 시 행동
+        }
         return cell
     }
     
