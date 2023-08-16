@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Thread {
+struct Thread : Codable{
     var title: String
     var createdAt: Date
-    var commentCount: Int
+    var content: String
     var photoData: Data?
     let authorProfile: Profile
     var comments: [Comment]?
