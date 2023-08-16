@@ -24,6 +24,10 @@
 		FFE4F2412A8A0DDD00BCC86D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE4F2402A8A0DDD00BCC86D /* ProfileViewController.swift */; };
 		FFE4F2432A8A0DFE00BCC86D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE4F2422A8A0DFE00BCC86D /* DetailViewController.swift */; };
 		FFE4F2452A8A207D00BCC86D /* ThreadDataSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE4F2442A8A207D00BCC86D /* ThreadDataSingleton.swift */; };
+		FFE4F2562A8C5EEA00BCC86D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE4F2552A8C5EEA00BCC86D /* MainViewController.swift */; };
+		FFE4F2582A8C5F1200BCC86D /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE4F2572A8C5F1200BCC86D /* MainCollectionViewController.swift */; };
+		FFE4F25B2A8C601400BCC86D /* MainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFE4F2592A8C601400BCC86D /* MainCollectionViewCell.xib */; };
+		FFE4F25C2A8C601400BCC86D /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFE4F25A2A8C601400BCC86D /* MainViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		FFE4F2402A8A0DDD00BCC86D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FFE4F2422A8A0DFE00BCC86D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FFE4F2442A8A207D00BCC86D /* ThreadDataSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadDataSingleton.swift; sourceTree = "<group>"; };
+		FFE4F2552A8C5EEA00BCC86D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FFE4F2572A8C5F1200BCC86D /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
+		FFE4F2592A8C601400BCC86D /* MainCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainCollectionViewCell.xib; path = "../../../../../../../../Downloads/ThreadApp-feature-mainPage/ThreadApp/resource/MainCollectionViewCell.xib"; sourceTree = "<group>"; };
+		FFE4F25A2A8C601400BCC86D /* MainViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainViewController.storyboard; path = "../../../../../../../../Downloads/ThreadApp-feature-mainPage/ThreadApp/resource/MainViewController.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +103,8 @@
 				FFE4F2382A8A001600BCC86D /* Create.storyboard */,
 				FFE4F2362A89FE8B00BCC86D /* Detail.storyboard */,
 				FFE4F23A2A8A009900BCC86D /* Profile.storyboard */,
+				FFE4F2592A8C601400BCC86D /* MainCollectionViewCell.xib */,
+				FFE4F25A2A8C601400BCC86D /* MainViewController.storyboard */,
 				FFD8F5932A89C6F700A1EFC4 /* Info.plist */,
 				FFD8F58E2A89C6F700A1EFC4 /* Assets.xcassets */,
 			);
@@ -105,6 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				FFD8F5892A89C6F500A1EFC4 /* ViewController.swift */,
+				FFE4F2572A8C5F1200BCC86D /* MainCollectionViewController.swift */,
+				FFE4F2552A8C5EEA00BCC86D /* MainViewController.swift */,
 				FFE4F23E2A8A0A2000BCC86D /* CreateViewController.swift */,
 				FFE4F2422A8A0DFE00BCC86D /* DetailViewController.swift */,
 				FFE4F2402A8A0DDD00BCC86D /* ProfileViewController.swift */,
@@ -191,12 +203,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFE4F23D2A8A011600BCC86D /* Home.storyboard in Resources */,
+				FFE4F25C2A8C601400BCC86D /* MainViewController.storyboard in Resources */,
 				FFE4F23B2A8A009900BCC86D /* Profile.storyboard in Resources */,
 				FFE4F2392A8A001600BCC86D /* Create.storyboard in Resources */,
 				FFD8F5922A89C6F700A1EFC4 /* LaunchScreen.storyboard in Resources */,
 				FFD8F58F2A89C6F700A1EFC4 /* Assets.xcassets in Resources */,
 				FFD8F58D2A89C6F500A1EFC4 /* Main.storyboard in Resources */,
 				FFE4F2372A89FE8B00BCC86D /* Detail.storyboard in Resources */,
+				FFE4F25B2A8C601400BCC86D /* MainCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +222,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFE4F2432A8A0DFE00BCC86D /* DetailViewController.swift in Sources */,
+				FFE4F2582A8C5F1200BCC86D /* MainCollectionViewController.swift in Sources */,
+				FFE4F2562A8C5EEA00BCC86D /* MainViewController.swift in Sources */,
 				FFD8F58A2A89C6F500A1EFC4 /* ViewController.swift in Sources */,
 				FFD8F5A22A89C9C500A1EFC4 /* Comment.swift in Sources */,
 				FFE4F2452A8A207D00BCC86D /* ThreadDataSingleton.swift in Sources */,
