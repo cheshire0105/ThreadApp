@@ -14,4 +14,5 @@ struct Thread {
     var photoData: Data?
     let authorProfile: Profile
     var comments: [Comment]?
+    
 }
