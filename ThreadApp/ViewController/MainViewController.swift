@@ -17,6 +17,7 @@ final class MainViewController: UIViewController {
 
     @IBOutlet weak var threadsCollectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, Thread>!
+    private lazy var snapshot = NSDiffableDataSourceSnapshot<Section, Thread>()
     
     
     override func viewDidLoad() {
@@ -38,6 +39,7 @@ final class MainViewController: UIViewController {
         configureDataSource()
         // 샘플 데이터 저장
         applySnapshot(items: mockThreads)
+        applySnapshotAppend(items: [.init(title: "테스트", createdAt: .init(), content: "키르키즈스탄", photoData: UIImage(systemName: "dogImage")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "dogImage")?.pngData(), name: "반가워", bio: "정보"))], section: .main)
 
     }
     
@@ -79,11 +81,16 @@ final class MainViewController: UIViewController {
     }
     
     private func applySnapshot(items: [Thread]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Thread>()
         snapshot.deleteAllItems()
         snapshot.appendSections([.main])
         snapshot.appendItems(items, toSection: .main)
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    
+    private func applySnapshotAppend(items: [Thread], section: Section) {
+        snapshot.appendItems(items, toSection: section)
+        dataSource.apply(snapshot, animatingDifferences: true)
+
     }
 
 }
