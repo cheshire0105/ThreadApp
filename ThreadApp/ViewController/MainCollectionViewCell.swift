@@ -60,8 +60,9 @@ final class MainCollectionViewCell: UICollectionViewCell {
     }
     
     @objc private func threadStackDidTapped(_ sender: UIGestureRecognizer) {
-        guard let thread else {return}
-        threadStackViewTapped!(thread)
+        guard let thread,
+              let threadStackViewTapped else {return}
+        threadStackViewTapped(thread)
     }
 
 }

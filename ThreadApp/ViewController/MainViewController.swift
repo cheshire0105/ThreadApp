@@ -9,14 +9,15 @@ import UIKit
 
 final class MainViewController: UIViewController {
     
-    enum Section {
+    private enum Section {
         case main
     }
+    private var mockThreads: [Thread] = [.init(title: "테스트", createdAt: .init(), content: "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea", photoData: UIImage(systemName: "pencil")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "pencil")?.pngData(), name: "반가워", bio: "정보")),.init(title: "테스트", createdAt: .init(), content: "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea", photoData: UIImage(systemName: "pencil")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "pencil")?.pngData(), name: "반가워", bio: "정보")),.init(title: "테스트", createdAt: .init(), content: "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea", photoData: UIImage(systemName: "pencil")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "pencil")?.pngData(), name: "반가워", bio: "정보")),.init(title: "테스트", createdAt: .init(), content: "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea", photoData: UIImage(systemName: "pencil")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "pencil")?.pngData(), name: "반가워", bio: "정보"))]
     
-    var dataSource: UICollectionViewDiffableDataSource<Section, String>!
-    
-    
+
     @IBOutlet weak var threadsCollectionView: UICollectionView!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Thread>!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +35,9 @@ final class MainViewController: UIViewController {
             UINib(nibName: MainCollectionViewCell.identifier, bundle: nil),
             forCellWithReuseIdentifier: MainCollectionViewCell.identifier
         )
-        threadsCollectionView.delegate = self
-        threadsCollectionView.dataSource = self
+        configureDataSource()
+        // 샘플 데이터 저장
+        applySnapshot(items: mockThreads)
 
     }
     
@@ -58,32 +60,31 @@ final class MainViewController: UIViewController {
         let compositionalLayout = UICollectionViewCompositionalLayout(section: section)
         return compositionalLayout
     }
-
-}
-
-extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
-        return 5
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-        
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: MainCollectionViewCell.identifier,
-            for: indexPath
-        ) as? MainCollectionViewCell else { return UICollectionViewCell() }
-        cell.bind(thread: .init(title: "테스트", createdAt: .init(), content: "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea", photoData: UIImage(systemName: "pencil")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "pencil")?.pngData(), name: "반가워", bio: "정보")))
-        cell.threadStackViewTapped = { thread in
-            // 탭 시 행동
+    private func configureDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, Thread>(
+            collectionView: threadsCollectionView
+        ) { collectionView, indexPath, item in
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: MainCollectionViewCell.identifier,
+                for: indexPath
+            ) as? MainCollectionViewCell else {return UICollectionViewCell()}
+            cell.bind(thread: item)
+            cell.threadStackViewTapped = { thread in
+                // 스레드 클릭시
+//                dump(thread)
+            }
+            return cell
         }
-        return cell
     }
     
+    private func applySnapshot(items: [Thread]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Thread>()
+        snapshot.deleteAllItems()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(items, toSection: .main)
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+
 }
+

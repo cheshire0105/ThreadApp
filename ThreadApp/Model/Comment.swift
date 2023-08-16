@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Comment {
+struct Comment: Hashable {
     var content: String
     let createdAt: Date
     let authorProfile: Profile

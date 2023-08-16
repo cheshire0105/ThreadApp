@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Thread {
+struct Thread: Hashable {
     var title: String
     var createdAt: Date
     var content: String
