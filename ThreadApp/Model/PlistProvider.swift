@@ -7,22 +7,47 @@
 
 import Foundation
 
+enum DataType {
+    case profile(_ profile: Profile? = nil)
+    case threads(_ threads: [Thread]? = nil)
+    
+    var data: Encodable? {
+        switch self {
+        case .profile(let profile):
+            return profile
+        case .threads(let threads):
+            return threads
+        }
+    }
+    
+    var key: String {
+        switch self {
+        case .profile:
+            return "Profile"
+        case .threads:
+            return "Threads"
+        }
+    }
+}
+
 protocol PlistProviderProtocol {
-    func load<T: Decodable>(_ type: T.Type) throws -> T
-    func save<T: Encodable>(data: T) throws
+    func load<T>(_ type: DataType) throws -> T
+    func save(_ type: DataType) throws
+    func delete(_ type: DataType) throws
 }
 
 struct PlistProvider: PlistProviderProtocol {
     
-    enum PlistProviderError: LocalizedError {
+    private enum PlistProviderError: LocalizedError {
         case pathNotFound
         case loadDataFailed
         case profileDataLoadFailed
         case threadsDataLoadFailed
         case typeDeosntExist
         case profileDeosntExist
+        case saveDataDeosntExist
     }
-    
+
     private func plistPath(plistName: String = "Info") throws -> String {
         guard let filePath = Bundle.main.path(forResource: plistName, ofType: "plist") else {
             throw PlistProviderError.pathNotFound
@@ -42,14 +67,13 @@ struct PlistProvider: PlistProviderProtocol {
         }
     }
     
-    func load<T: Decodable>(_ type: T.Type) throws -> T {
+    func load<T>(_ type: DataType) throws -> T {
         do {
-            if type is Profile.Type {
+            switch type {
+            case .profile:
                 return try loadProfile() as! T
-            } else if type is [Thread].Type {
+            case .threads:
                 return try loadThreads() as! T
-            } else {
-                throw PlistProviderError.typeDeosntExist
             }
         } catch {
             throw error
@@ -58,11 +82,12 @@ struct PlistProvider: PlistProviderProtocol {
 
     private func loadProfile() throws -> Profile  {
         do {
+            let profileKey = DataType.profile().key
             let loadedDatas = try loadPlistDatas()
-            if loadedDatas["Profile"] == nil {
+            if loadedDatas[profileKey] == nil {
                 throw PlistProviderError.profileDeosntExist
             }
-            guard let profileData = loadedDatas["Profile"] as? Data,
+            guard let profileData = loadedDatas[profileKey] as? Data,
                   let profile = try? profileData.toObject(Profile.self) else {
                 throw PlistProviderError.profileDataLoadFailed
             }
@@ -74,11 +99,12 @@ struct PlistProvider: PlistProviderProtocol {
     
     private func loadThreads() throws -> [Thread] {
         do {
+            let threadKey = DataType.threads().key
             let loadedDatas = try loadPlistDatas()
-            if loadedDatas["Threads"] == nil {
+            if loadedDatas[threadKey] == nil {
                 return []
             }
-            guard let threadsData = loadedDatas["Threads"] as? Data,
+            guard let threadsData = loadedDatas[threadKey] as? Data,
                   let threads = try? threadsData.toObject([Thread].self) else {
                 throw PlistProviderError.threadsDataLoadFailed
             }
@@ -88,18 +114,27 @@ struct PlistProvider: PlistProviderProtocol {
         }
     }
     
-    func save<T: Encodable>(data: T) throws {
+    func save(_ type: DataType) throws {
         do {
+            guard let data = type.data else {
+                throw PlistProviderError.saveDataDeosntExist
+            }
             let filePath = try plistPath()
             var loadedData = try loadPlistDatas()
             let jsonData = try data.toJson()
-            if data is Profile {
-                loadedData["Profile"] = jsonData
-            } else if let threadData = data as? Thread {
-                var threads = try loadThreads()
-                threads.append(threadData)
-                loadedData["Threads"] = try threads.toJson()
-            }
+            loadedData[type.key] = jsonData
+            let encodedData = try PropertyListSerialization.data(fromPropertyList: loadedData, format: .xml, options: 0)
+            try encodedData.write(to:  URL(fileURLWithPath: filePath))
+        } catch {
+            throw error
+        }
+    }
+    
+    func delete(_ type: DataType) throws {
+        do {
+            let filePath = try plistPath()
+            var loadedData = try loadPlistDatas()
+            loadedData[type.key] = nil
             let data = try PropertyListSerialization.data(fromPropertyList: loadedData, format: .xml, options: 0)
             try data.write(to:  URL(fileURLWithPath: filePath))
         } catch {
