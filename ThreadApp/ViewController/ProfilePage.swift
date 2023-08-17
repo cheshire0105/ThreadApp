@@ -1,7 +1,10 @@
+//
+//  ProfilePage.swift
 import Foundation
 import UIKit
 
-class ProfilePage: UIViewController {
+class ProfilePage: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     
     // IBOutlet 선언부
     @IBOutlet weak var MoreViewButton: UIButton!
@@ -22,11 +25,11 @@ class ProfilePage: UIViewController {
     //  RepliesButton
     @IBOutlet weak var ProfileReportsButton: UIButton!
     //  ReportsButton
-    @IBOutlet weak var ProfileMeunBar: UIProgressView!
-    //  ProfileMeunBar
-    @IBOutlet weak var ProfileDetailFeild: UITextField!
+    @IBOutlet weak var ProfileDetailFeild: UITableView!
     //  ProfileDetailFeild
     
+    var threadTitles: [String] = []
+    //목업 타이틀
     
     // Profile 데이터를 저장할 변수. 값이 설정되면 UI도 자동으로 업데이트
     var userProfile: Profile? {
@@ -36,65 +39,60 @@ class ProfilePage: UIViewController {
     }
     
     
+    
+    
     // ViewDidLoad: 뷰가 메모리에 로드된 후 호출됨
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ProfileDetailFeild.delegate = self
+        ProfileDetailFeild.dataSource = self
+        
+        ProfileDetailFeild.register(UITableViewCell.self, forCellReuseIdentifier: "threadTitleCell")
+
+        
         // 프로필 이미지를 원형으로 설정
         ProfileImage.layer.cornerRadius = 30
+        
+        // 초기에 ProfileThreadButtonTapped 버튼이 눌러진 것처럼 설정
+        ProfileThreadButton.tintColor = .black
+        ProfileRepliesButton.tintColor = .gray
+        ProfileReportsButton.tintColor = .gray
     }
-
+    
     // 첫 번째 버튼 액션
     @IBAction func ProfileThreadButtonTapped(_ sender: UIButton) {
-        // 진행률을 0%에서 33%로 애니메이션하여 변경
-        animateProgress(from: ProfileMeunBar.progress, to: 0.33)
+        // 각 버튼의 색상을 업데이트
+        ProfileThreadButton.tintColor = .black
+        ProfileRepliesButton.tintColor = .gray
+        ProfileReportsButton.tintColor = .gray
     }
-
+    
     // 두 번째 버튼 액션
     @IBAction func ProfileRepliesButtonTapped(_ sender: UIButton) {
-        // 진행률을 현재 값에서 66%로 애니메이션하여 변경
-        animateProgress(from: ProfileMeunBar.progress, to: 0.66)
+        // 각 버튼의 색상을 업데이트
+        ProfileThreadButton.tintColor = .gray
+        ProfileRepliesButton.tintColor = .black
+        ProfileReportsButton.tintColor = .gray
     }
-
+    
     // 세 번째 버튼 액션
     @IBAction func ProfileReportsButtonTapped(_ sender: UIButton) {
-        // 진행률을 현재 값에서 100%로 애니메이션하여 변경
-        animateProgress(from: ProfileMeunBar.progress, to: 1.0)
+        // 각 버튼의 색상을 업데이트
+        ProfileThreadButton.tintColor = .gray
+        ProfileRepliesButton.tintColor = .gray
+        ProfileReportsButton.tintColor = .black
     }
-
+    
     @IBAction func MoreViewAction(_ sender: UIButton) {
     }
     
-
     
-    
-    // 진행률 애니메이션 함수
-    func animateProgress(from start: Float, to end: Float) {
-        let duration: TimeInterval = 0.5 // 애니메이션 지속 시간
-        let animationStep: TimeInterval = 0.01 // 애니메이션 단계별 시간
-        var currentProgress = start  // 시작 진행률
-    
-        // 진행률 증가 또는 감소량 계산
-        let increment = (end - start) * Float(animationStep / duration)
-    
-        // Timer를 사용해 진행률을 점차적으로 변경
-        Timer.scheduledTimer(withTimeInterval: animationStep, repeats: true) { timer in
-            currentProgress += increment
-            // 목표 진행률에 도달하면 타이머 종료
-            if (increment > 0 && currentProgress >= end) || (increment < 0 && currentProgress <= end) {
-                currentProgress = end
-                timer.invalidate()
-            }
-        
-            // UIProgressView 업데이트
-            self.ProfileMeunBar.setProgress(currentProgress, animated: false)
-        }
-    }
     
     // 주어진 Profile 데이터를 사용하여 UI를 업데이트하는 함수
     func updateUIWithProfileData() {
         guard let profile = userProfile else { return }
-
+        
         // 이미지 설정
         if let data = profile.photoData {
             ProfileImage.image = UIImage(data: data)
@@ -103,17 +101,50 @@ class ProfilePage: UIViewController {
         // 이름 설정
         ProfileName.text = profile.name
         
-//        ProfileInfo.text = profile.introduction
+        //        ProfileInfo.text = profile.introduction
     }
     
     //  프로필 수정
     func profileUpdated(name: String, introduction: String, imageData: Data?) {
         userProfile?.name = name
-//        userProfile?.introduction = introduction
+        //        userProfile?.introduction = introduction
         if let data = imageData {
             userProfile?.photoData = data
             ProfileImage.image = UIImage(data: data)
         }
         updateUIWithProfileData()
     }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ThreadTitle.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "threadTitleCell", for: indexPath)
+        cell.textLabel?.text = ThreadTitle[indexPath.row]
+        return cell
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
+
+let ThreadTitle : [String] = [
+    "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea",
+    "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea",
+    "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea",
+    "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea"
+]

@@ -1,9 +1,6 @@
 //
 //  MainViewController.swift
-//  ThreadApp
-//
-//  Created by hong on 2023/08/14.
-//
+
 
 import UIKit
 
@@ -14,7 +11,7 @@ final class MainViewController: UIViewController {
     }
     private var mockThreads: [Thread] = [.init(title: "테스트", createdAt: .init(), content: "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea", photoData: UIImage(systemName: "pencil")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "pencil")?.pngData(), name: "반가워", bio: "정보")),.init(title: "테스트", createdAt: .init(), content: "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea", photoData: UIImage(systemName: "pencil")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "pencil")?.pngData(), name: "반가워", bio: "정보")),.init(title: "테스트", createdAt: .init(), content: "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea", photoData: UIImage(systemName: "pencil")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "pencil")?.pngData(), name: "반가워", bio: "정보")),.init(title: "테스트", createdAt: .init(), content: "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea", photoData: UIImage(systemName: "pencil")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "pencil")?.pngData(), name: "반가워", bio: "정보"))]
     
-
+    
     @IBOutlet weak var threadsCollectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, Thread>!
     private lazy var snapshot = NSDiffableDataSourceSnapshot<Section, Thread>()
@@ -29,7 +26,7 @@ final class MainViewController: UIViewController {
     }
     
     private func threadsCollectionConfigure() {
-
+        
         threadsCollectionView.collectionViewLayout = createCompositionalLayout()
         threadsCollectionView.register(
             UINib(nibName: MainCollectionViewCell.identifier, bundle: nil),
@@ -39,7 +36,7 @@ final class MainViewController: UIViewController {
         // 샘플 데이터 저장
         applySnapshot(items: mockThreads)
         applySnapshotAppend(items: [.init(title: "테스트", createdAt: .init(), content: "키르키즈스탄", photoData: UIImage(systemName: "dogImage")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "dogImage")?.pngData(), name: "반가워", bio: "정보"))], section: .main)
-
+        
     }
     
     private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
@@ -57,7 +54,7 @@ final class MainViewController: UIViewController {
             subitems: [item]
         )
         let section = NSCollectionLayoutSection(group: group)
- 
+        
         let compositionalLayout = UICollectionViewCompositionalLayout(section: section)
         return compositionalLayout
     }
@@ -73,7 +70,7 @@ final class MainViewController: UIViewController {
             cell.bind(thread: item)
             cell.threadStackViewTapped = { thread in
                 // 스레드 클릭시
-//                dump(thread)
+                //                dump(thread)
             }
             return cell
         }
@@ -89,7 +86,12 @@ final class MainViewController: UIViewController {
     private func applySnapshotAppend(items: [Thread], section: Section) {
         snapshot.appendItems(items, toSection: section)
         dataSource.apply(snapshot, animatingDifferences: true)
-
+        
+    }
+    func showProfilePage() {
+        let profilePage = ProfilePage()
+        navigationController?.pushViewController(profilePage, animated: true)
     }
 }
+    
 

@@ -90,18 +90,11 @@
                                     <action selector="ProfileReportsButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Q6a-wz-aB4"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="X7M-Pp-v45">
-                                <rect key="frame" x="16" y="350" width="358" height="4"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="CsC-Bf-OaK">
+                                <rect key="frame" x="29" y="350" width="335" height="397"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </progressView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yj0-DU-hcl">
-                                <rect key="frame" x="35" y="376" width="322" height="383"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -112,10 +105,9 @@
                         <outlet property="BellButton" destination="35P-5x-XJ2" id="2Tv-LA-ipl"/>
                         <outlet property="InstaButton" destination="yP2-s8-7QU" id="ne0-Gz-SUc"/>
                         <outlet property="MoreViewButton" destination="qMd-Pq-5dC" id="cfl-9F-BOw"/>
-                        <outlet property="ProfileDetailFeild" destination="yj0-DU-hcl" id="9kv-hR-lRg"/>
+                        <outlet property="ProfileDetailFeild" destination="CsC-Bf-OaK" id="kEn-ic-e68"/>
                         <outlet property="ProfileImage" destination="fYt-C3-Gmb" id="TMb-9N-EtQ"/>
                         <outlet property="ProfileInfo" destination="PT8-Vr-iyj" id="Ps3-WT-2se"/>
-                        <outlet property="ProfileMeunBar" destination="X7M-Pp-v45" id="8Fh-lF-YwD"/>
                         <outlet property="ProfileName" destination="zeF-qS-Upz" id="RSE-bh-Yb8"/>
                         <outlet property="ProfileRepliesButton" destination="rll-zw-gkT" id="bV8-Tm-aPM"/>
                         <outlet property="ProfileReportsButton" destination="Jxg-I0-7Rg" id="x81-up-Nm6"/>
@@ -165,7 +157,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PtZ-PF-Uoc">
-                                <rect key="frame" x="16" y="388" width="361" height="269"/>
+                                <rect key="frame" x="29" y="385" width="361" height="269"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
