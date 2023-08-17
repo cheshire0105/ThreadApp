@@ -3,6 +3,11 @@ import UIKit
 
 class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSource,UITabBarDelegate, UITableViewDelegate {
     
+    func refreshThreads() {
+            self.loadThreads()  // 스레드 데이터를 새로 불러옵니다.
+            self.ProfileDetailFeild.reloadData()  // 테이블 뷰를 새로고침합니다.
+        }
+    
     
     
     // IBOutlet 선언부
@@ -25,7 +30,7 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
     @IBOutlet weak var ProfileReportsButton: UIButton!
     //  ReportsButton
     //  ProfileMeunBar
-  
+    
     @IBOutlet weak var ProfileDetailFeild: UITableView!
     
     var threadTitles: [String] = []
@@ -37,6 +42,8 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
             updateUIWithProfileData()
         }
     }
+    
+    var threads: [Thread] = []  // 스레드 목록을 저장할 배열
     
     
     // ViewDidLoad: 뷰가 메모리에 로드된 후 호출됨
@@ -57,6 +64,10 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
         ProfileThreadButton.tintColor = .black
         ProfileRepliesButton.tintColor = .gray
         ProfileReportsButton.tintColor = .gray
+        
+        ProfileDetailFeild.register(UINib(nibName: "tableView", bundle: nil), forCellReuseIdentifier: "ThreadCell")
+        
+        loadThreads()  // 스레드 데이터 불러오기
         
         
     }
@@ -144,22 +155,70 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ThreadTitle.count
+        return threads.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "threadTitleCell", for: indexPath)
-        cell.textLabel?.text = ThreadTitle[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ThreadCell", for: indexPath) as! TableViewCell
+        let thread = threads[indexPath.row]
+        
+        cell.celltitleLabel.text = thread.title
+        cell.contentLabel.text = thread.content
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // 1. 데이터 모델에서 삭제
+            ThreadStore.shared.deleteThread(at: indexPath.row)
+            
+            // 2. 테이블 뷰에서 해당 셀을 삭제
+            threads.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+
+    
+    func saveThreads() {
+        do {
+            let encoder = JSONEncoder()
+            let encodedThreads = try encoder.encode(threads)
+            UserDefaults.standard.set(encodedThreads, forKey: "savedThreads")
+        } catch {
+            print("Failed to encode threads: \(error)")
+        }
+    }
+
+
+    
+    
+    func loadThreads() {
+        
+        guard let savedThreadsData = UserDefaults.standard.data(forKey: "savedThreads") else {
+            print("No threads saved in UserDefaults.")
+            return
+        }
+        
+        do {
+            let decoder = JSONDecoder()
+            let decodedThreads = try decoder.decode([Thread].self, from: savedThreadsData)
+            self.threads = decodedThreads
+            ProfileDetailFeild.reloadData()  // 테이블 뷰 갱신
+            print(threads)
+
+        } catch {
+            print("Failed to decode saved threads: \(error)")
+        }
+        
+    }
+    
+    @objc func reloadThreads() {
+            // 스레드 데이터를 새로 불러오고, 테이블 뷰를 갱신합니다.
+            loadThreads()
+        }
+        
+        
     
     
     
 }
-let ThreadTitle : [String] = [
-    "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇweaㅁㅇ",
-    "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea",
-    "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea",
-    "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea"
-]
-

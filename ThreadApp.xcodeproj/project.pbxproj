@@ -31,6 +31,8 @@
 		FFE4F25E2A8C6A1700BCC86D /* ProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFE4F25D2A8C6A1700BCC86D /* ProfileStoryboard.storyboard */; };
 		FFE4F2612A8C6D2600BCC86D /* ProfilePageModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE4F25F2A8C6D2600BCC86D /* ProfilePageModal.swift */; };
 		FFE4F2622A8C6D2600BCC86D /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE4F2602A8C6D2600BCC86D /* ProfilePage.swift */; };
+		FFE4F28A2A8E2A7300BCC86D /* tableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFE4F2892A8E2A7300BCC86D /* tableView.xib */; };
+		FFE4F28C2A8E2AC800BCC86D /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE4F28B2A8E2AC800BCC86D /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		FFE4F25D2A8C6A1700BCC86D /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileStoryboard.storyboard; sourceTree = "<group>"; };
 		FFE4F25F2A8C6D2600BCC86D /* ProfilePageModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePageModal.swift; sourceTree = "<group>"; };
 		FFE4F2602A8C6D2600BCC86D /* ProfilePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
+		FFE4F2892A8E2A7300BCC86D /* tableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = tableView.xib; sourceTree = "<group>"; };
+		FFE4F28B2A8E2AC800BCC86D /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 				FFE4F2362A89FE8B00BCC86D /* Detail.storyboard */,
 				FFE4F23A2A8A009900BCC86D /* Profile.storyboard */,
 				FFE4F25D2A8C6A1700BCC86D /* ProfileStoryboard.storyboard */,
+				FFE4F2892A8E2A7300BCC86D /* tableView.xib */,
 				FFE4F2592A8C601400BCC86D /* MainCollectionViewCell.xib */,
 				FFE4F25A2A8C601400BCC86D /* MainViewController.storyboard */,
 				FFD8F5932A89C6F700A1EFC4 /* Info.plist */,
@@ -129,6 +134,7 @@
 				FFE4F25F2A8C6D2600BCC86D /* ProfilePageModal.swift */,
 				FFE4F2422A8A0DFE00BCC86D /* DetailViewController.swift */,
 				FFE4F2402A8A0DDD00BCC86D /* ProfileViewController.swift */,
+				FFE4F28B2A8E2AC800BCC86D /* TableViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -216,6 +222,7 @@
 				FFE4F23B2A8A009900BCC86D /* Profile.storyboard in Resources */,
 				FFE4F2392A8A001600BCC86D /* Create.storyboard in Resources */,
 				FFD8F5922A89C6F700A1EFC4 /* LaunchScreen.storyboard in Resources */,
+				FFE4F28A2A8E2A7300BCC86D /* tableView.xib in Resources */,
 				FFD8F58F2A89C6F700A1EFC4 /* Assets.xcassets in Resources */,
 				FFD8F58D2A89C6F500A1EFC4 /* Main.storyboard in Resources */,
 				FFE4F2372A89FE8B00BCC86D /* Detail.storyboard in Resources */,
@@ -231,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFE4F28C2A8E2AC800BCC86D /* TableViewCell.swift in Sources */,
 				FFE4F2432A8A0DFE00BCC86D /* DetailViewController.swift in Sources */,
 				FFE4F2612A8C6D2600BCC86D /* ProfilePageModal.swift in Sources */,
 				FFE4F2582A8C5F1200BCC86D /* MainCollectionViewController.swift in Sources */,

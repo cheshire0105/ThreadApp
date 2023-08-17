@@ -42,11 +42,22 @@ extension ThreadStore {
     
     // 추가된 스레드를 UserDefaults에 저장
     func addThread(thread: Thread) {
-        threads.append(thread)
+        threads.insert(thread, at: 0) // 맨 앞에 삽입
         saveThreads()
-        NotificationCenter.default.post(name: Notification.Name("NewThreadAdded"), object: nil)
-
+        NotificationCenter.default.post(name: Notification.Name("ThreadDataChanged"), object: nil)
     }
+
+    
+    func deleteThread(at index: Int) {
+        if index >= 0 && index < threads.count {
+            threads.remove(at: index)
+            saveThreads()
+            NotificationCenter.default.post(name: Notification.Name("ThreadDataChanged"), object: nil)
+        } else {
+            print("Invalid index: \(index)")
+        }
+    }
+
     
  
 }
