@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F1F333122A8DF5B60055240C /* PlistProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F333112A8DF5B60055240C /* PlistProvider.swift */; };
+		F1F333142A8DF8040055240C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F333132A8DF8040055240C /* MainViewController.swift */; };
 		FFD8F5862A89C6F500A1EFC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8F5852A89C6F500A1EFC4 /* AppDelegate.swift */; };
 		FFD8F5882A89C6F500A1EFC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8F5872A89C6F500A1EFC4 /* SceneDelegate.swift */; };
 		FFD8F58A2A89C6F500A1EFC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8F5892A89C6F500A1EFC4 /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		F1F333112A8DF5B60055240C /* PlistProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistProvider.swift; sourceTree = "<group>"; };
+		F1F333132A8DF8040055240C /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FFD8F5822A89C6F500A1EFC4 /* ThreadApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThreadApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFD8F5852A89C6F500A1EFC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFD8F5872A89C6F500A1EFC4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		FFD8F59A2A89C88600A1EFC4 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F1F333132A8DF8040055240C /* MainViewController.swift */,
 				FFD8F5892A89C6F500A1EFC4 /* ViewController.swift */,
 				FFE4F2572A8C5F1200BCC86D /* MainCollectionViewController.swift */,
 				FFE4F23E2A8A0A2000BCC86D /* CreateViewController.swift */,
@@ -240,6 +243,7 @@
 				FFE4F23F2A8A0A2000BCC86D /* CreateViewController.swift in Sources */,
 				FFD8F5A02A89C99600A1EFC4 /* Profile.swift in Sources */,
 				FFD8F5862A89C6F500A1EFC4 /* AppDelegate.swift in Sources */,
+				F1F333142A8DF8040055240C /* MainViewController.swift in Sources */,
 				FFE4F2622A8C6D2600BCC86D /* ProfilePage.swift in Sources */,
 				FFD8F5882A89C6F500A1EFC4 /* SceneDelegate.swift in Sources */,
 				F1F333122A8DF5B60055240C /* PlistProvider.swift in Sources */,
