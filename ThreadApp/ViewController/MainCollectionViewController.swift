@@ -1,9 +1,6 @@
 //
 //  MainCollectionViewCell.swift
-//  ThreadApp
-//
-//  Created by hong on 2023/08/14.
-//
+
 
 import UIKit
 
