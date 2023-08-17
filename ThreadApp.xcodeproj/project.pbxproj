@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
 		F1F333122A8DF5B60055240C /* PlistProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F333112A8DF5B60055240C /* PlistProvider.swift */; };
 		F1F333142A8DF8040055240C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F333132A8DF8040055240C /* MainViewController.swift */; };
+		F1F333052A8DA6020055240C /* CornerRadiusChangableUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F333042A8DA6020055240C /* CornerRadiusChangableUIImageView.swift */; };
+		F1F333082A8DA7A30055240C /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F333072A8DA7A30055240C /* UIView+.swift */; };
 		FFD8F5862A89C6F500A1EFC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8F5852A89C6F500A1EFC4 /* AppDelegate.swift */; };
 		FFD8F5882A89C6F500A1EFC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8F5872A89C6F500A1EFC4 /* SceneDelegate.swift */; };
 		FFD8F58A2A89C6F500A1EFC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8F5892A89C6F500A1EFC4 /* ViewController.swift */; };
@@ -37,6 +40,8 @@
 /* Begin PBXFileReference section */
 		F1F333112A8DF5B60055240C /* PlistProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistProvider.swift; sourceTree = "<group>"; };
 		F1F333132A8DF8040055240C /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F1F333042A8DA6020055240C /* CornerRadiusChangableUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusChangableUIImageView.swift; sourceTree = "<group>"; };
+		F1F333072A8DA7A30055240C /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		FFD8F5822A89C6F500A1EFC4 /* ThreadApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThreadApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFD8F5852A89C6F500A1EFC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFD8F5872A89C6F500A1EFC4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F1F333062A8DA7760055240C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F1F333072A8DA7A30055240C /* UIView+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		FFD8F5792A89C6F500A1EFC4 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +107,7 @@
 		FFD8F5842A89C6F500A1EFC4 /* ThreadApp */ = {
 			isa = PBXGroup;
 			children = (
+				F1F333062A8DA7760055240C /* Extension */,
 				FFD8F59C2A89C8C200A1EFC4 /* App */,
 				FFD8F59B2A89C8B000A1EFC4 /* Model */,
 				FFD8F59A2A89C88600A1EFC4 /* ViewController */,
@@ -131,6 +145,7 @@
 				FFE4F25F2A8C6D2600BCC86D /* ProfilePageModal.swift */,
 				FFE4F2422A8A0DFE00BCC86D /* DetailViewController.swift */,
 				FFE4F2402A8A0DDD00BCC86D /* ProfileViewController.swift */,
+				F1F333042A8DA6020055240C /* CornerRadiusChangableUIImageView.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -237,11 +252,14 @@
 				FFE4F2432A8A0DFE00BCC86D /* DetailViewController.swift in Sources */,
 				FFE4F2612A8C6D2600BCC86D /* ProfilePageModal.swift in Sources */,
 				FFE4F2582A8C5F1200BCC86D /* MainCollectionViewController.swift in Sources */,
+				F1F333052A8DA6020055240C /* CornerRadiusChangableUIImageView.swift in Sources */,
+				FFE4F2562A8C5EEA00BCC86D /* MainViewController.swift in Sources */,
 				FFD8F58A2A89C6F500A1EFC4 /* ViewController.swift in Sources */,
 				FFD8F5A22A89C9C500A1EFC4 /* Comment.swift in Sources */,
 				FFE4F2452A8A207D00BCC86D /* ThreadDataSingleton.swift in Sources */,
 				FFE4F23F2A8A0A2000BCC86D /* CreateViewController.swift in Sources */,
 				FFD8F5A02A89C99600A1EFC4 /* Profile.swift in Sources */,
+				F1F333082A8DA7A30055240C /* UIView+.swift in Sources */,
 				FFD8F5862A89C6F500A1EFC4 /* AppDelegate.swift in Sources */,
 				F1F333142A8DF8040055240C /* MainViewController.swift in Sources */,
 				FFE4F2622A8C6D2600BCC86D /* ProfilePage.swift in Sources */,

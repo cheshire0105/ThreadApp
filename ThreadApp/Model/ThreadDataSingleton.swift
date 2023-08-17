@@ -13,7 +13,7 @@ class ThreadStore {
     
     var threads: [Thread] = [] // Thread 객체들을 저장할 배열
     private let threadsKey = "savedThreads"
-
+    
 }
 
 extension ThreadStore {
@@ -44,6 +44,10 @@ extension ThreadStore {
     func addThread(thread: Thread) {
         threads.append(thread)
         saveThreads()
+        NotificationCenter.default.post(name: Notification.Name("NewThreadAdded"), object: nil)
+
     }
+    
+ 
 }
 
