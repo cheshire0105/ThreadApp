@@ -85,6 +85,16 @@ class ProfilePage: UIViewController, UITableViewDataSource, UITableViewDelegate 
     }
     
     @IBAction func MoreViewAction(_ sender: UIButton) {
+        // Instantiate the ProfilePageModalViewController
+        let storyboard = UIStoryboard(name: "ProfileStoryboard", bundle: nil)
+        if let profileModalVC = storyboard.instantiateViewController(withIdentifier: "ProfilePageModalViewController") as? ProfilePageModalViewController {
+            
+            // Set the delegate
+            
+            // Present the ProfilePageModalViewController
+            self.present(profileModalVC, animated: true, completion: nil)
+        }
+        // 추가
     }
     
     

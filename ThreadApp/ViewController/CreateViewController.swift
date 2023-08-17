@@ -7,9 +7,12 @@
 
 import UIKit
 
+
+
 class CreateViewController: UIViewController, UITextViewDelegate {
     
     
+    @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var threadText: UITextView!
     
     @IBOutlet weak var threadTitle: UITextField!
@@ -33,7 +36,11 @@ class CreateViewController: UIViewController, UITextViewDelegate {
             UIBarButtonItem(title: "게시", style: .done, target: self, action: #selector(createButton(_:)))
         ]
         threadText.inputAccessoryView = toolbar
-
+        // 사용자 이름 불러오기
+        let userNameText = loadUserName()
+        
+        // 사용자 이름을 라벨에 표시
+        userName.text = userNameText
     }
     
     deinit {
@@ -50,11 +57,22 @@ class CreateViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func createButton(_ sender: UIBarButtonItem) {
+        // 사용자 이름 불러오기
+        let userNameText = loadUserName()
+        print(userNameText)
+        
+        
+        
         let title = threadTitle.text ?? ""
         let text = threadText.text ?? ""
         let currentDateTime = Date()
-        let author = Profile(photoData: nil, name: "UserName", bio: "UserBio")
+        
+        // 사용자 이름을 불러옵니다.
+        let authorName = loadUserName()
+        
+        let author = Profile(photoData: nil, name: authorName, bio: "UserBio")
         let newThread = Thread(title: title, createdAt: currentDateTime, content: text, photoData: nil, authorProfile: author, comments: nil)
+        
         ThreadStore.shared.addThread(thread: newThread)
         
         print("게시되었습니다.")
@@ -82,10 +100,10 @@ class CreateViewController: UIViewController, UITextViewDelegate {
     @objc func keyboardWillShow(notification: NSNotification) {
         // 필요한 경우 뷰를 올리는 로직 추가
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-             if self.view.frame.origin.y == 0 {
-                 self.view.frame.origin.y -= keyboardSize.height / 3  // 뷰를 키보드 높이의 1/3만큼 위로 이동
-             }
-         }
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height / 3  // 뷰를 키보드 높이의 1/3만큼 위로 이동
+            }
+        }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -109,4 +127,17 @@ class CreateViewController: UIViewController, UITextViewDelegate {
             print("Failed to decode saved threads: \(error)")
         }
     }
+    func loadUserName() -> String {
+        do {
+            if let savedProfile = UserDefaults.standard.object(forKey: "profile") as? Data {
+                let profile = try JSONDecoder().decode(Profile.self, from: savedProfile)
+                return profile.name
+            }
+        } catch {
+            print("Failed to load profile: \(error)")
+        }
+        return "Unknown User"
+    }
+    
 }
+

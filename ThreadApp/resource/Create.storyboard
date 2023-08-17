@@ -78,6 +78,7 @@
                     <connections>
                         <outlet property="threadText" destination="fR4-j5-sM5" id="ezS-WM-N15"/>
                         <outlet property="threadTitle" destination="i3V-6i-QCK" id="flD-YY-Tjh"/>
+                        <outlet property="userName" destination="yh1-ND-DL0" id="jZg-Df-udN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
