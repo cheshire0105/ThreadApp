@@ -1,3 +1,5 @@
+//
+//  ProfilePage.swift
 import Foundation
 import UIKit
 
@@ -7,8 +9,6 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
             self.loadThreads()  // 스레드 데이터를 새로 불러옵니다.
             self.ProfileDetailFeild.reloadData()  // 테이블 뷰를 새로고침합니다.
         }
-    
-    
     
     // IBOutlet 선언부
     @IBOutlet weak var MoreViewButton: UIButton!
@@ -30,7 +30,6 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
     @IBOutlet weak var ProfileReportsButton: UIButton!
     //  ReportsButton
     //  ProfileMeunBar
-    
     @IBOutlet weak var ProfileDetailFeild: UITableView!
     
     var threadTitles: [String] = []
@@ -69,11 +68,12 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
         
         loadThreads()  // 스레드 데이터 불러오기
         
-        
     }
     
     // 첫 번째 버튼 액션
     @IBAction func ProfileThreadButtonTapped(_ sender: UIButton) {
+
+        // 각 버튼의 색상을 업데이트
         ProfileThreadButton.tintColor = .black
         ProfileRepliesButton.tintColor = .gray
         ProfileReportsButton.tintColor = .gray
@@ -82,6 +82,7 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
     // 두 번째 버튼 액션
     @IBAction func ProfileRepliesButtonTapped(_ sender: UIButton) {
         // 진행률을 현재 값에서 66%로 애니메이션하여 변경
+        // 각 버튼의 색상을 업데이트
         ProfileThreadButton.tintColor = .gray
         ProfileRepliesButton.tintColor = .black
         ProfileReportsButton.tintColor = .gray
@@ -110,12 +111,6 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
         // 추가
     }
     
-    
-    
-    
-    
-    
-    
     //  프로필 수정
     func profileUpdated(name: String, introduction: String, imageData: Data?) {
         // 새로운 Profile 인스턴스를 생성하고, 이를 userProfile 변수에 할당합니다.
@@ -136,24 +131,24 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
             print("Failed to load profile: \(error)")
         }
     }
-    
+
+    // 주어진 Profile 데이터를 사용하여 UI를 업데이트하는 함수
+
     func updateUIWithProfileData() {
         guard let profile = userProfile else { return }
         
-        DispatchQueue.main.async {
-            // 이미지 설정
-            if let data = profile.photoData {
-                self.ProfileImage.image = UIImage(data: data)
-            }
-            
-            // 이름 설정
-            self.ProfileName.text = profile.name
-            
-            // 자기 소개 설정
-            self.ProfileInfo.text = profile.bio
+        // 이미지 설정
+        if let data = profile.photoData {
+            ProfileImage.image = UIImage(data: data)
         }
+        
+        // 이름 설정
+        ProfileName.text = profile.name
+        
+        ProfileInfo.text = profile.bio
     }
     
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return threads.count
     }
@@ -216,9 +211,5 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
             // 스레드 데이터를 새로 불러오고, 테이블 뷰를 갱신합니다.
             loadThreads()
         }
-        
-        
-    
-    
     
 }

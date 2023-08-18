@@ -1,9 +1,6 @@
 //
 //  MainCollectionViewCell.swift
-//  ThreadApp
-//
-//  Created by hong on 2023/08/14.
-//
+
 
 import UIKit
 
@@ -21,9 +18,6 @@ final class MainCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var threadCommentCountLabel: UILabel!
     @IBOutlet weak var threadStackView: UIStackView!
     
-    @IBOutlet weak var titleLabel: UILabel!
-    
-    
     var threadStackViewTapped: ((Thread) -> Void)? = nil
     private var thread: Thread? = nil
     
@@ -34,8 +28,6 @@ final class MainCollectionViewCell: UICollectionViewCell {
     }
     
     func bind(thread: Thread) {
-        titleLabel.text = thread.title
-        
         if let authorProfileImageData = thread.authorProfile.photoData {
             authorProfileImageView.image = UIImage(data: authorProfileImageData)
         }

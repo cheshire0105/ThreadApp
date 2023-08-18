@@ -1,9 +1,6 @@
 //
 //  MainViewController.swift
-//  ThreadApp
-//
-//  Created by hong on 2023/08/14.
-//
+
 
 import UIKit
 
@@ -100,6 +97,10 @@ final class MainViewController: UIViewController {
                 for: indexPath
             ) as? MainCollectionViewCell else {return UICollectionViewCell()}
             cell.bind(thread: item)
+            cell.threadStackViewTapped = { thread in
+                // 스레드 클릭시
+                //                dump(thread)
+            }
             return cell
         }
     }
