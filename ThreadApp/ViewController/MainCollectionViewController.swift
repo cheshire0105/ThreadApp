@@ -5,7 +5,9 @@
 import UIKit
 
 final class MainCollectionViewCell: UICollectionViewCell {
+    
 
+    
     static let identifier = String(describing: MainCollectionViewCell.self)
     
     @IBOutlet weak var authorProfileImageView: UIImageView!
@@ -24,7 +26,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
         let threadStackViewDidTappedGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(threadStackDidTapped))
         threadStackView.addGestureRecognizer(threadStackViewDidTappedGestureRecognizer)
     }
-
+    
     func bind(thread: Thread) {
         if let authorProfileImageData = thread.authorProfile.photoData {
             authorProfileImageView.image = UIImage(data: authorProfileImageData)
@@ -41,7 +43,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
             threadCommentCountLabel.text = "댓글 개수 0 개"
         }
         self.thread = thread
-
+        
     }
     
     override func prepareForReuse() {
@@ -60,7 +62,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
               let threadStackViewTapped else {return}
         threadStackViewTapped(thread)
     }
-
+    
 }
 
 extension Date {

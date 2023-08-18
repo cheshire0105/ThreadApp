@@ -6,11 +6,17 @@ import UIKit
 
 final class MainViewController: UIViewController {
     
+    // 스레드 목록을 저장할 프로퍼티
+    private var threads: [Thread] = []
+
+    // 스레드 데이터를 새로고침하는 함수
+    func refreshThreads() {
+        self.threadsCollectionView.reloadData()  // Collection View를 새로고침합니다.
+    }
+    
     private enum Section {
         case main
     }
-    //    private var mockThreads: [Thread] = [.init(title: "테스트", createdAt: .init(), content: "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea", photoData: UIImage(systemName: "pencil")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "pencil")?.pngData(), name: "반가워", bio: "정보")),.init(title: "테스트", createdAt: .init(), content: "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea", photoData: UIImage(systemName: "pencil")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "pencil")?.pngData(), name: "반가워", bio: "정보")),.init(title: "테스트", createdAt: .init(), content: "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea", photoData: UIImage(systemName: "pencil")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "pencil")?.pngData(), name: "반가워", bio: "정보")),.init(title: "테스트", createdAt: .init(), content: "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇwea", photoData: UIImage(systemName: "pencil")?.pngData(), authorProfile: .init(photoData: UIImage(systemName: "pencil")?.pngData(), name: "반가워", bio: "정보"))]
-    //
   
     @IBOutlet weak var threadsCollectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, Thread>!
@@ -18,6 +24,8 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ThreadStore.shared.loadThreads() // 이 부분이 중요합니다.
+        
         configure()
         
         // ThreadStore의 threads 배열에서 초기 데이터를 가져옴
@@ -26,9 +34,14 @@ final class MainViewController: UIViewController {
         
         // 새로운 스레드가 추가되었을 때의 알림을 받도록 Observer를 추가
         NotificationCenter.default.addObserver(self, selector: #selector(reloadThreads), name: Notification.Name("NewThreadAdded"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadThreads), name: Notification.Name("ThreadDataChanged"), object: nil)
+
+        
+        
     }
     
-    @objc private func reloadThreads() {
+    @objc  func reloadThreads() {
         // ThreadStore의 threads 배열에서 새로운 데이터를 가져옴
         let newThreads = ThreadStore.shared.threads
         
@@ -86,7 +99,6 @@ final class MainViewController: UIViewController {
             return cell
         }
     }
-    
     private func applySnapshot(items: [Thread]) {
         snapshot.deleteAllItems()
         snapshot.appendSections([.main])
