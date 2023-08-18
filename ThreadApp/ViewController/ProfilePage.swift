@@ -1,9 +1,9 @@
+//
+//  ProfilePage.swift
 import Foundation
 import UIKit
 
 class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSource,UITabBarDelegate, UITableViewDelegate {
-    
-    
     
     // IBOutlet 선언부
     @IBOutlet weak var MoreViewButton: UIButton!
@@ -25,8 +25,8 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
     @IBOutlet weak var ProfileReportsButton: UIButton!
     //  ReportsButton
     //  ProfileMeunBar
-  
     @IBOutlet weak var ProfileDetailFeild: UITableView!
+
     
     var threadTitles: [String] = []
     //목업 타이틀
@@ -37,8 +37,7 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
             updateUIWithProfileData()
         }
     }
-    
-    
+
     // ViewDidLoad: 뷰가 메모리에 로드된 후 호출됨
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,22 +46,19 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
         ProfileDetailFeild.dataSource = self
         
         ProfileDetailFeild.register(UITableViewCell.self, forCellReuseIdentifier: "threadTitleCell")
-        
+      
         // 프로필 이미지를 원형으로 설정
         ProfileImage.layer.cornerRadius = 30
-        
-        loadProfile()
-        
+
         // 초기에 ProfileThreadButtonTapped 버튼이 눌러진 것처럼 설정
         ProfileThreadButton.tintColor = .black
         ProfileRepliesButton.tintColor = .gray
         ProfileReportsButton.tintColor = .gray
-        
-        
     }
     
     // 첫 번째 버튼 액션
     @IBAction func ProfileThreadButtonTapped(_ sender: UIButton) {
+        // 각 버튼의 색상을 업데이트
         ProfileThreadButton.tintColor = .black
         ProfileRepliesButton.tintColor = .gray
         ProfileReportsButton.tintColor = .gray
@@ -71,6 +67,7 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
     // 두 번째 버튼 액션
     @IBAction func ProfileRepliesButtonTapped(_ sender: UIButton) {
         // 진행률을 현재 값에서 66%로 애니메이션하여 변경
+        // 각 버튼의 색상을 업데이트
         ProfileThreadButton.tintColor = .gray
         ProfileRepliesButton.tintColor = .black
         ProfileReportsButton.tintColor = .gray
@@ -91,7 +88,6 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
         if let profileModalVC = storyboard.instantiateViewController(withIdentifier: "ProfilePageModalViewController") as? ProfilePageModalViewController {
             
             // Set the delegate
-            profileModalVC.delegate = self
             
             // Present the ProfilePageModalViewController
             self.present(profileModalVC, animated: true, completion: nil)
@@ -101,48 +97,43 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
     
     
     
-    
-    
-    
-    
-    //  프로필 수정
-    func profileUpdated(name: String, introduction: String, imageData: Data?) {
-        // 새로운 Profile 인스턴스를 생성하고, 이를 userProfile 변수에 할당합니다.
-        userProfile = Profile(photoData: imageData, name: name, bio: introduction)
-        
-        // UI 업데이트
-        updateUIWithProfileData()
-    }
-    func loadProfile() {
-        do {
-            if let savedProfile = UserDefaults.standard.object(forKey: "profile") as? Data {
-                let profile = try JSONDecoder().decode(Profile.self, from: savedProfile)
-                
-                // 로드된 프로필 정보를 userProfile 변수에 설정합니다.
-                userProfile = profile
-            }
-        } catch {
-            print("Failed to load profile: \(error)")
-        }
-    }
-    
+
+    // 주어진 Profile 데이터를 사용하여 UI를 업데이트하는 함수
     func updateUIWithProfileData() {
         guard let profile = userProfile else { return }
         
-        DispatchQueue.main.async {
-            // 이미지 설정
-            if let data = profile.photoData {
-                self.ProfileImage.image = UIImage(data: data)
-            }
-            
-            // 이름 설정
-            self.ProfileName.text = profile.name
-            
-            // 자기 소개 설정
-            self.ProfileInfo.text = profile.bio
+        // 이미지 설정
+        if let data = profile.photoData {
+            ProfileImage.image = UIImage(data: data)
         }
+        
+        // 이름 설정
+        ProfileName.text = profile.name
+        
+        //        ProfileInfo.text = profile.introduction
     }
     
+    //  프로필 수정
+    func profileUpdated(name: String, introduction: String, imageData: Data?) {
+        userProfile?.name = name
+        //        userProfile?.introduction = introduction
+        if let data = imageData {
+            userProfile?.photoData = data
+            ProfileImage.image = UIImage(data: data)
+        }
+        updateUIWithProfileData()
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ThreadTitle.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "threadTitleCell", for: indexPath)
+        cell.textLabel?.text = ThreadTitle[indexPath.row]
+        return cell
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ThreadTitle.count
     }
@@ -152,9 +143,7 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
         cell.textLabel?.text = ThreadTitle[indexPath.row]
         return cell
     }
-    
-    
-    
+ 
 }
 let ThreadTitle : [String] = [
     "wetweatewatㄹㄴㅇㅁㄹㅁㅇㄴㅇㄴㄹㄹㅇㄴㅁㅇㄴㄹㅁㅇㄹㄴㅁㄹㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅁㅇㄴㄹㅇㄴㅁㄹㅁㄴㅇㄹㄴㅁㅇㄴㅁㄹㅇㄹㅁㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇweaㅁㅇ",
