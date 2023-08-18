@@ -16,11 +16,13 @@ final class CreateViewController: UIViewController {
     @IBOutlet weak var threadText: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var threadImageView: UIImageView!
+    @IBOutlet weak var topNavigationView: UIView!
     private var selectedImageData: Data? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        topNavigationView.addBottomBorderWithColor(color: .gray, width: 0.5)
         configureThreadTextView()
         configureKeyboardSetting()
         configureProfileInformationViews()
