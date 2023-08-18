@@ -7,7 +7,6 @@ import UIKit
 final class MainCollectionViewCell: UICollectionViewCell {
     
 
-    
     static let identifier = String(describing: MainCollectionViewCell.self)
     
     @IBOutlet weak var authorProfileImageView: UIImageView!
@@ -48,7 +47,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        authorProfileImageView.image = nil
+        authorProfileImageView.image = UIImage(named: "defaultProfileImage")
         threadImageView.image = nil
         authorProfileNameLabel.text = ""
         threadWrittenDateLabel.text = ""
@@ -76,30 +75,31 @@ extension Date {
     
     static func difference(of date: Date) -> String {
         let timeInterval = Date().timeIntervalSince(date)
-        if timeInterval.secondsDifference >= 0 {
-            return "\(timeInterval.secondsDifference)초"
-        } else if timeInterval.minuteDifference > 0 {
-            return "\(timeInterval.minuteDifference)분"
+        if timeInterval.dayDifference > 0 {
+            return "\(timeInterval.dayDifference)일"
         } else if timeInterval.hourDifference > 0 {
             return "\(timeInterval.hourDifference)시간"
+        } else if timeInterval.minuteDifference > 0 {
+            return "\(timeInterval.minuteDifference)분"
         } else {
-            return "\(timeInterval.dayDifference)일"
+            return "\(timeInterval.secondsDifference)초"
         }
     }
 }
 
 
 extension TimeInterval {
+
     var dayDifference: Int {
-        Int(self / 150.0)
+        Int(self / (60 * 60 * 24))
     }
     var hourDifference: Int {
-        Int(self / 3600.0)
+        Int(self / (60 * 60))
     }
     var minuteDifference: Int {
-        Int(self) % 3600 / 60
+        Int(self / 60)
     }
     var secondsDifference: Int {
-        Int(self) % 60
+        Int(self)
     }
 }
