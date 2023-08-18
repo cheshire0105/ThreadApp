@@ -19,9 +19,9 @@ class ProfilePage: UIViewController,ProfilePageModalDelegate,UITableViewDataSour
     //  인스타 버튼
     @IBOutlet weak var ProfileImage: UIImageView!
     //  프로필 이미지
-    @IBOutlet weak var ProfileName: UITextField!
+    @IBOutlet weak var ProfileName: UILabel!
     //  프로필 이름
-    @IBOutlet weak var ProfileInfo: UITextField!
+    @IBOutlet weak var ProfileInfo: UILabel!
     //  프로필 정보
     @IBOutlet weak var ProfileThreadButton: UIButton!
     //  ThreadButton

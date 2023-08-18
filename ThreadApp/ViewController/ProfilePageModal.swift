@@ -8,11 +8,11 @@ protocol ProfilePageModalDelegate: AnyObject {
 class ProfilePageModalViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var introductionTextField: UITextField!
+    @IBOutlet weak var introductionTextField: UITextView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var imageEdit: UIButton!
     @IBOutlet weak var profileEditSave: UIButton!
-    
+    @IBOutlet weak var UIScroll: UIScrollView!
     
     
     
@@ -28,11 +28,24 @@ class ProfilePageModalViewController: UIViewController, UIImagePickerControllerD
         
         // 힌트 설정
         nameTextField.placeholder = "사용할 이름을 입력하세요(영어)" // "Enter your name" in English
-        introductionTextField.placeholder = "간단한 자기소개를 작성하세요(영어)" // "Write your introduction" in English
+        introductionTextField.delegate = self
+        introductionTextField.text = "간단한 자기소개를 작성하세요(영어)"
+        introductionTextField.textColor = UIColor.lightGray
+        
         profileImageView.layer.cornerRadius = 30
+        
+        nameTextField.contentVerticalAlignment = .top
         
         loadProfile()
         
+        introductionTextField.layer.borderWidth = 1.0 // 테두리의 두께
+        introductionTextField.layer.borderColor = UIColor.black.cgColor
+        
+        // 키보드 관련 알림 등록
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowProfile), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     @IBAction func chooseImageTapped(_ sender: UIButton) {
@@ -94,10 +107,57 @@ class ProfilePageModalViewController: UIViewController, UIImagePickerControllerD
         }
     }
     
+    @objc func keyboardWillShowProfile(notification: NSNotification) {
+        // 필요한 경우 뷰를 올리는 로직 추가
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height / 3  // 뷰를 키보드 높이의 1/3만큼 위로 이동
+            }
+        }
+    }
+
     
+//    @objc func keyboardWillHide(notification: NSNotification) {
+//        let contentInsets = UIEdgeInsets.zero
+//        UIScroll.contentInset = contentInsets
+//        UIScroll.scrollIndicatorInsets = contentInsets
+//    }
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+          self.view.endEditing(true)
+    }
 }
 
 
+extension UIView {
+    func findFirstResponder() -> UIView? {
+        if self.isFirstResponder {
+            return self
+        }
+        
+        for subView in self.subviews {
+            if let firstResponder = subView.findFirstResponder() {
+                return firstResponder
+            }
+        }
+        
+        return nil
+    }
+}
+
+extension ProfilePageModalViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "간단한 자기소개를 작성하세요(영어)"
+            textView.textColor = UIColor.lightGray
+        }
+    }
+}
 
