@@ -144,10 +144,12 @@
                         <outlet property="BellButton" destination="35P-5x-XJ2" id="2Tv-LA-ipl"/>
                         <outlet property="InstaButton" destination="yP2-s8-7QU" id="ne0-Gz-SUc"/>
                         <outlet property="MoreViewButton" destination="qMd-Pq-5dC" id="cfl-9F-BOw"/>
+
                         <outlet property="ProfileDetailFeild" destination="mss-jE-NhN" id="5zM-kN-aSZ"/>
                         <outlet property="ProfileImage" destination="fYt-C3-Gmb" id="TMb-9N-EtQ"/>
                         <outlet property="ProfileInfo" destination="0My-Ta-QhP" id="Elw-RG-Hvk"/>
                         <outlet property="ProfileName" destination="szl-vJ-CUO" id="d4u-Je-n2K"/>
+
                         <outlet property="ProfileRepliesButton" destination="rll-zw-gkT" id="bV8-Tm-aPM"/>
                         <outlet property="ProfileReportsButton" destination="Jxg-I0-7Rg" id="x81-up-Nm6"/>
                         <outlet property="ProfileThreadButton" destination="fq8-2R-gYP" id="wwB-e8-D4M"/>
@@ -214,6 +216,7 @@
                                     <action selector="saveProfileTapped:" destination="7h3-Z7-WgX" eventType="touchUpInside" id="q9f-bY-FFo"/>
                                 </connections>
                             </button>
+
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yPs-yI-5Mc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

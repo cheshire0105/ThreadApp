@@ -8,11 +8,7 @@ final class MainViewController: UIViewController {
     
     // 스레드 목록을 저장할 프로퍼티
     private var threads: [Thread] = []
-    
-    
-    
-    
-    
+
     // 스레드 데이터를 새로고침하는 함수
     func refreshThreads() {
         self.threadsCollectionView.reloadData()  // Collection View를 새로고침합니다.
@@ -21,8 +17,7 @@ final class MainViewController: UIViewController {
     private enum Section {
         case main
     }
-    
-    
+  
     @IBOutlet weak var threadsCollectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, Thread>!
     private lazy var snapshot = NSDiffableDataSourceSnapshot<Section, Thread>()
@@ -111,5 +106,15 @@ final class MainViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     
+    private func applySnapshotAppend(items: [Thread], section: Section) {
+        snapshot.appendItems(items, toSection: section)
+        dataSource.apply(snapshot, animatingDifferences: true)
+        
+    }
+    func showProfilePage() {
+        let profilePage = ProfilePage()
+        navigationController?.pushViewController(profilePage, animated: true)
+    }
 }
+    
 
