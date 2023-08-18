@@ -47,7 +47,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        authorProfileImageView.image = nil
+        authorProfileImageView.image = UIImage(named: "defaultProfileImage")
         threadImageView.image = nil
         authorProfileNameLabel.text = ""
         threadWrittenDateLabel.text = ""
