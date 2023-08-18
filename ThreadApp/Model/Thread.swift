@@ -10,9 +10,8 @@ import Foundation
 struct Thread {
     var title: String
     var createdAt: Date
-    var content: Int
+    var commentCount: Int
     var photoData: Data?
     let authorProfile: Profile
     var comments: [Comment]?
-    
 }

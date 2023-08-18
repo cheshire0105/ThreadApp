@@ -11,5 +11,4 @@ struct Profile {
     var photoData: Data?
     var name: String
     var bio: String
-    var introduction: String
 }
