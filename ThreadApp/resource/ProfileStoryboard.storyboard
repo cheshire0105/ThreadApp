@@ -165,40 +165,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="cbK-6W-Dcu">
-                                <rect key="frame" x="263" y="60" width="100" height="200"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1z-C5-RNu">
-                                        <rect key="frame" x="23.333333333333311" y="0.0" width="53.666666666666657" height="34.333333333333336"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="저장"/>
-                                        <connections>
-                                            <action selector="saveProfileTapped:" destination="7h3-Z7-WgX" eventType="touchUpInside" id="Bg9-K6-zQ9"/>
-                                        </connections>
-                                    </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uZY-sV-jmJ">
-                                        <rect key="frame" x="0.0" y="48.333333333333336" width="100" height="83.333333333333314"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACv-fM-BVs">
-                                        <rect key="frame" x="13.666666666666686" y="145.66666666666666" width="72.666666666666671" height="54.333333333333343"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="이미지 추가"/>
-                                        <connections>
-                                            <action selector="chooseImageTapped:" destination="7h3-Z7-WgX" eventType="touchUpInside" id="VSW-tW-EDF"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACv-fM-BVs">
+                                <rect key="frame" x="271" y="227" width="102" height="34.333333333333329"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="boj-Ws-PV0"/>
-                                    <constraint firstAttribute="height" constant="200" id="mZd-tS-vWp"/>
+                                    <constraint firstAttribute="height" constant="34.329999999999998" id="2ez-f7-uj6"/>
+                                    <constraint firstAttribute="width" constant="102" id="R98-k5-rKD"/>
                                 </constraints>
-                            </stackView>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="이미지 추가"/>
+                                <connections>
+                                    <action selector="chooseImageTapped:" destination="7h3-Z7-WgX" eventType="touchUpInside" id="VSW-tW-EDF"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uZY-sV-jmJ">
+                                <rect key="frame" x="277" y="122" width="100" height="83.333333333333314"/>
+                            </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XUn-eZ-XRO">
-                                <rect key="frame" x="20" y="290" width="353" height="50"/>
+                                <rect key="frame" x="20" y="311.33333333333331" width="353" height="28.666666666666686"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="ffG-lX-n00"/>
+                                    <constraint firstAttribute="height" constant="28.670000000000002" id="Yed-xy-WJE"/>
+                                    <constraint firstAttribute="width" constant="353" id="gCi-2z-39l"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -207,24 +194,48 @@
                                 <rect key="frame" x="20" y="390" width="353" height="300"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="MlI-aM-wHo"/>
+                                    <constraint firstAttribute="width" constant="353" id="LxL-ha-QWQ"/>
+                                    <constraint firstAttribute="height" constant="300" id="lTR-f7-pxb"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1z-C5-RNu">
+                                <rect key="frame" x="323" y="70" width="53.666666666666686" height="34.333333333333343"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34.329999999999998" id="QYT-tJ-EdI"/>
+                                    <constraint firstAttribute="width" constant="53.670000000000002" id="vQQ-OV-R0l"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="저장"/>
+                                <connections>
+                                    <action selector="saveProfileTapped:" destination="7h3-Z7-WgX" eventType="touchUpInside" id="q9f-bY-FFo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yPs-yI-5Mc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="XUn-eZ-XRO" firstAttribute="leading" secondItem="yPs-yI-5Mc" secondAttribute="leading" constant="20" id="2ZO-Yg-CVz"/>
-                            <constraint firstItem="yPs-yI-5Mc" firstAttribute="trailing" secondItem="XUn-eZ-XRO" secondAttribute="trailing" constant="20" id="2v3-y3-Zrc"/>
-                            <constraint firstItem="cbK-6W-Dcu" firstAttribute="top" secondItem="yPs-yI-5Mc" secondAttribute="top" constant="60" id="5TI-dY-813"/>
-                            <constraint firstItem="yPs-yI-5Mc" firstAttribute="trailing" secondItem="D8U-hB-Vav" secondAttribute="trailing" constant="20" id="9wQ-Aw-n4j"/>
-                            <constraint firstItem="yPs-yI-5Mc" firstAttribute="trailing" secondItem="cbK-6W-Dcu" secondAttribute="trailing" constant="30" id="hrh-ao-9fG"/>
-                            <constraint firstItem="D8U-hB-Vav" firstAttribute="top" secondItem="XUn-eZ-XRO" secondAttribute="bottom" constant="50" id="mJD-MU-AIq"/>
-                            <constraint firstItem="D8U-hB-Vav" firstAttribute="leading" secondItem="yPs-yI-5Mc" secondAttribute="leading" constant="20" id="mht-yq-AlR"/>
-                            <constraint firstItem="XUn-eZ-XRO" firstAttribute="top" secondItem="cbK-6W-Dcu" secondAttribute="bottom" constant="30" id="q5J-sB-d4B"/>
+                            <constraint firstItem="q1z-C5-RNu" firstAttribute="leading" secondItem="yPs-yI-5Mc" secondAttribute="leading" constant="323" id="4LU-9d-zNg"/>
+                            <constraint firstItem="XUn-eZ-XRO" firstAttribute="top" secondItem="ACv-fM-BVs" secondAttribute="bottom" constant="50" id="4YO-gE-Tiy"/>
+                            <constraint firstItem="yPs-yI-5Mc" firstAttribute="trailing" secondItem="D8U-hB-Vav" secondAttribute="trailing" constant="20" id="BxV-yy-rU0"/>
+                            <constraint firstItem="yPs-yI-5Mc" firstAttribute="trailing" secondItem="uZY-sV-jmJ" secondAttribute="trailing" constant="16" id="CFl-Bk-8Gt"/>
+                            <constraint firstItem="uZY-sV-jmJ" firstAttribute="leading" secondItem="yPs-yI-5Mc" secondAttribute="leading" constant="277" id="Hou-ho-7XG"/>
+                            <constraint firstItem="ACv-fM-BVs" firstAttribute="top" secondItem="uZY-sV-jmJ" secondAttribute="bottom" constant="21.670000000000002" id="SZL-DS-XAC"/>
+                            <constraint firstItem="D8U-hB-Vav" firstAttribute="top" secondItem="XUn-eZ-XRO" secondAttribute="bottom" constant="50" id="UOV-ah-2Wi"/>
+                            <constraint firstItem="D8U-hB-Vav" firstAttribute="top" secondItem="XUn-eZ-XRO" secondAttribute="bottom" constant="50" id="Y7Q-Og-1pd"/>
+                            <constraint firstItem="yPs-yI-5Mc" firstAttribute="trailing" secondItem="ACv-fM-BVs" secondAttribute="trailing" constant="20" id="aUA-sB-6Z4"/>
+                            <constraint firstItem="yPs-yI-5Mc" firstAttribute="bottom" secondItem="D8U-hB-Vav" secondAttribute="bottom" constant="103" id="d7H-xi-NmT"/>
+                            <constraint firstItem="D8U-hB-Vav" firstAttribute="leading" secondItem="yPs-yI-5Mc" secondAttribute="leading" constant="20" id="e6F-gb-6OK"/>
+                            <constraint firstItem="XUn-eZ-XRO" firstAttribute="top" secondItem="ACv-fM-BVs" secondAttribute="bottom" constant="50" id="g0A-NQ-IFq"/>
+                            <constraint firstItem="yPs-yI-5Mc" firstAttribute="trailing" secondItem="q1z-C5-RNu" secondAttribute="trailing" constant="16.329999999999998" id="kZF-gn-3la"/>
+                            <constraint firstItem="ACv-fM-BVs" firstAttribute="top" secondItem="uZY-sV-jmJ" secondAttribute="bottom" constant="21.670000000000002" id="n8E-bV-4Up"/>
+                            <constraint firstItem="uZY-sV-jmJ" firstAttribute="top" secondItem="q1z-C5-RNu" secondAttribute="bottom" constant="17.670000000000002" id="nWn-4C-Y3D"/>
+                            <constraint firstItem="uZY-sV-jmJ" firstAttribute="top" secondItem="q1z-C5-RNu" secondAttribute="bottom" constant="17.670000000000002" id="qVw-jO-WYN"/>
+                            <constraint firstItem="q1z-C5-RNu" firstAttribute="top" secondItem="yPs-yI-5Mc" secondAttribute="top" constant="70" id="svP-mX-qN5"/>
+                            <constraint firstItem="yPs-yI-5Mc" firstAttribute="trailing" secondItem="XUn-eZ-XRO" secondAttribute="trailing" constant="20" id="xla-qT-0en"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KnC-Fb-Cxw"/>

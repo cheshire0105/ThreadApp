@@ -12,7 +12,6 @@ class ProfilePageModalViewController: UIViewController, UIImagePickerControllerD
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var imageEdit: UIButton!
     @IBOutlet weak var profileEditSave: UIButton!
-    @IBOutlet weak var UIScroll: UIScrollView!
     
     
     
@@ -25,6 +24,8 @@ class ProfilePageModalViewController: UIViewController, UIImagePickerControllerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+     
         
         // 힌트 설정
         nameTextField.placeholder = "사용할 이름을 입력하세요(영어)" // "Enter your name" in English
@@ -41,8 +42,10 @@ class ProfilePageModalViewController: UIViewController, UIImagePickerControllerD
         introductionTextField.layer.borderWidth = 1.0 // 테두리의 두께
         introductionTextField.layer.borderColor = UIColor.black.cgColor
         
-        // 키보드 관련 알림 등록
+//         키보드 관련 알림 등록
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowProfile), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -64,6 +67,9 @@ class ProfilePageModalViewController: UIViewController, UIImagePickerControllerD
     }
     
     @IBAction func saveProfileTapped(_ sender: UIButton) {
+        
+        print("Save Profile Button Tapped")
+
         if let name = nameTextField.text, let introduction = introductionTextField.text {
             let profile = Profile(photoData: selectedImageData, name: name, bio: introduction)
             
@@ -77,6 +83,7 @@ class ProfilePageModalViewController: UIViewController, UIImagePickerControllerD
             dismiss(animated: true, completion: nil)
         }
     }
+    
     
     func saveProfile(profile: Profile) {
         do {
@@ -98,14 +105,26 @@ class ProfilePageModalViewController: UIViewController, UIImagePickerControllerD
                 // 로드된 프로필 정보를 UI에 설정합니다.
                 nameTextField.text = profile.name
                 introductionTextField.text = profile.bio
+                
                 if let imageData = profile.photoData {
-                    profileImageView.image = UIImage(data: imageData)
+                    if let image = UIImage(data: imageData) {
+                        profileImageView.image = image
+                    } else {
+                        print("Failed to create UIImage from data")
+                    }
+                } else {
+                    // 기본 이미지 설정
+                    profileImageView.image = UIImage(named: "defaultProfileImage")
                 }
+                
+            } else {
+                print("No saved profile data found")
             }
         } catch {
             print("Failed to load profile: \(error)")
         }
     }
+
     
     @objc func keyboardWillShowProfile(notification: NSNotification) {
         // 필요한 경우 뷰를 올리는 로직 추가
@@ -115,6 +134,13 @@ class ProfilePageModalViewController: UIViewController, UIImagePickerControllerD
             }
         }
     }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+          // 키보드가 사라질 때 뷰를 원래 위치로 되돌리는 로직
+          if self.view.frame.origin.y != 0 {
+              self.view.frame.origin.y = 0
+          }
+      }
 
     
 //    @objc func keyboardWillHide(notification: NSNotification) {
@@ -126,6 +152,11 @@ class ProfilePageModalViewController: UIViewController, UIImagePickerControllerD
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
           self.view.endEditing(true)
     }
+    
+
+
+    
+    
 }
 
 
