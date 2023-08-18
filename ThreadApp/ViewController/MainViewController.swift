@@ -82,6 +82,10 @@ final class MainViewController: UIViewController {
                 for: indexPath
             ) as? MainCollectionViewCell else {return UICollectionViewCell()}
             cell.bind(thread: item)
+            cell.threadStackViewTapped = { thread in
+                // 스레드 클릭시
+                //                dump(thread)
+            }
             return cell
         }
     }
@@ -91,6 +95,16 @@ final class MainViewController: UIViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(items, toSection: .main)
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    
+    private func applySnapshotAppend(items: [Thread], section: Section) {
+        snapshot.appendItems(items, toSection: section)
+        dataSource.apply(snapshot, animatingDifferences: true)
+        
+    }
+    func showProfilePage() {
+        let profilePage = ProfilePage()
+        navigationController?.pushViewController(profilePage, animated: true)
     }
 }
 
