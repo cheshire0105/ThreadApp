@@ -13,6 +13,7 @@ class ThreadStore {
     
     var threads: [Thread] = [] // Thread 객체들을 저장할 배열
     private let threadsKey = "savedThreads"
+    private let profileKey = "profile"
     
 }
 
@@ -26,6 +27,16 @@ extension ThreadStore {
             UserDefaults.standard.set(encodedThreads, forKey: threadsKey)
         } catch {
             print("Failed to encode threads: \(error)")
+        }
+    }
+    
+    func loadProfile() -> Profile?  {
+        do {
+            guard let savedProfileData = UserDefaults.standard.data(forKey: profileKey) else { return nil }
+            let profileData = try JSONDecoder().decode(Profile.self, from: savedProfileData)
+            return profileData
+        } catch {
+            return nil
         }
     }
     

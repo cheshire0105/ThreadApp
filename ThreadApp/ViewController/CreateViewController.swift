@@ -70,7 +70,8 @@ class CreateViewController: UIViewController, UITextViewDelegate {
         // 사용자 이름을 불러옵니다.
         let authorName = loadUserName()
         
-        let author = Profile(photoData: nil, name: authorName, bio: "UserBio")
+        let authorPhotoData = ThreadStore.shared.loadProfile()?.photoData
+        let author = Profile(photoData: authorPhotoData, name: authorName, bio: "UserBio")
         let newThread = Thread(title: title, createdAt: currentDateTime, content: text, photoData: nil, authorProfile: author, comments: nil)
         
         ThreadStore.shared.addThread(thread: newThread)
