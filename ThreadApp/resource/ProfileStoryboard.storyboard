@@ -21,7 +21,11 @@
                                 <rect key="frame" x="324" y="58" width="49.666666666666686" height="34"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="ellipsis.circle" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" image="ellipsis.circle" catalog="system">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                                    </backgroundConfiguration>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="MoreViewAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="mfZ-B7-bK7"/>
                                     <segue destination="7h3-Z7-WgX" kind="show" identifier="ProfilePageModal" id="BMu-O1-3Le"/>
@@ -31,7 +35,11 @@
                                 <rect key="frame" x="270" y="57" width="49" height="35"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="bell" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" image="bell" catalog="system">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                                    </backgroundConfiguration>
+                                </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yP2-s8-7QU">
                                 <rect key="frame" x="222" y="57" width="40" height="40"/>
@@ -87,19 +95,21 @@
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0My-Ta-QhP">
                                 <rect key="frame" x="26" y="206" width="334" height="83"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szl-vJ-CUO">
                                 <rect key="frame" x="26" y="126" width="236" height="43"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="35P-5x-XJ2" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="57" id="01m-7M-koE"/>
                             <constraint firstItem="szl-vJ-CUO" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="67" id="1z3-8n-JE8"/>
@@ -144,12 +154,10 @@
                         <outlet property="BellButton" destination="35P-5x-XJ2" id="2Tv-LA-ipl"/>
                         <outlet property="InstaButton" destination="yP2-s8-7QU" id="ne0-Gz-SUc"/>
                         <outlet property="MoreViewButton" destination="qMd-Pq-5dC" id="cfl-9F-BOw"/>
-
                         <outlet property="ProfileDetailFeild" destination="mss-jE-NhN" id="5zM-kN-aSZ"/>
                         <outlet property="ProfileImage" destination="fYt-C3-Gmb" id="TMb-9N-EtQ"/>
                         <outlet property="ProfileInfo" destination="0My-Ta-QhP" id="Elw-RG-Hvk"/>
                         <outlet property="ProfileName" destination="szl-vJ-CUO" id="d4u-Je-n2K"/>
-
                         <outlet property="ProfileRepliesButton" destination="rll-zw-gkT" id="bV8-Tm-aPM"/>
                         <outlet property="ProfileReportsButton" destination="Jxg-I0-7Rg" id="x81-up-Nm6"/>
                         <outlet property="ProfileThreadButton" destination="fq8-2R-gYP" id="wwB-e8-D4M"/>
@@ -175,7 +183,11 @@
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="이미지 추가"/>
+                                <buttonConfiguration key="configuration" style="plain" title="이미지 추가">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="systemCyanColor"/>
+                                    </backgroundConfiguration>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="chooseImageTapped:" destination="7h3-Z7-WgX" eventType="touchUpInside" id="VSW-tW-EDF"/>
                                 </connections>
@@ -211,15 +223,18 @@
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="저장"/>
+                                <buttonConfiguration key="configuration" style="plain" title="저장">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                    </backgroundConfiguration>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="saveProfileTapped:" destination="7h3-Z7-WgX" eventType="touchUpInside" id="q9f-bY-FFo"/>
                                 </connections>
                             </button>
-
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yPs-yI-5Mc"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="q1z-C5-RNu" firstAttribute="leading" secondItem="yPs-yI-5Mc" secondAttribute="leading" constant="323" id="4LU-9d-zNg"/>
                             <constraint firstItem="XUn-eZ-XRO" firstAttribute="top" secondItem="ACv-fM-BVs" secondAttribute="bottom" constant="50" id="4YO-gE-Tiy"/>
@@ -265,6 +280,18 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemCyanColor">
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
